@@ -18,7 +18,7 @@ You can access each dimension of the ```dim3``` variable by
 ![](../pics/threads.jfif)
 
 
-# For a given thread block, the limitation on the number of threads in each dimension are as follows:
+### For a given thread block, the limitation on the number of threads in each dimension are as follows:
 ```
 - x<=1024
 - y<=1024
@@ -26,9 +26,42 @@ You can access each dimension of the ```dim3``` variable by
 - x * y * z < 1024
 ```
 
-# A grid can have a maximum of following number of blocks in each dimension
+### A grid can have a maximum of following number of blocks in each dimension
 ```
 - x < 2^32-1
 - y < 65536
 - z < 65536
 ```
+
+### Calcuating the global index in a 2D grid
+
+```
+row_offset = gridDim.x * blockDim.x * blockIdx.y
+block_offset = blockIdx.x * blockDim.x
+gid = row_offset + block_offset + threadIdx.x
+```
+
+## CUDA memory transfer
+
+```
+cudaMemcpy(destination ptr, source ptr, size in bytes, direction)
+```
+
+Direction
+- Host to device - cudamemcpyhtod
+- Device to host - cudamemcpydtoh
+- Device to device - cudamemcpydtod
+
+
+
+## Data transfers
+The CPU and the GPU have its own memory space with solid memory bandwidth. Obviously the weakest link is the interconnection between the CPU and the GPU. PCIE provides a bandwidth of 8GB/s in the ideal case but in practise it could be lower. 
+
+## When GPU <-> CPU memory transfers are performed?
+
+![](../pics/data_transfers.png)
+![](../pics/data_transfers_2.png)
+![](../pics/types_data_transfers.png)
+
+Follow this link for an explanation of memory transfers: 
+[](https://www.youtube.com/watch?v=Yv4thF9tvPo&t=8s)
