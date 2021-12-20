@@ -16,3 +16,19 @@ You can access each dimension of the ```dim3``` variable by
 ```
 
 ![](../pics/threads.jfif)
+
+
+# For a given thread block, the limitation on the number of threads in each dimension are as follows:
+```
+- x<=1024
+- y<=1024
+- z<=64
+- x * y * z < 1024
+```
+
+# A grid can have a maximum of following number of blocks in each dimension
+```
+- x < 2^32-1
+- y < 65536
+- z < 65536
+```
