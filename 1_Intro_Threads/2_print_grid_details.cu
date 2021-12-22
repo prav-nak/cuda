@@ -17,7 +17,7 @@ int main() {
 	nz = 1;
 
 	dim3 grid_size(2,3,4);
-        dim3 block_size(nx,ny,nz);
+    dim3 block_size(nx,ny,nz);
 
 	print_threadIds<<<grid_size, block_size>>>();
 

@@ -20,17 +20,18 @@ threadIdx is $x$, and threadId is $x$. Working with $2$D arrays, then $Dz$ would
 
 ## Organization of threads in different dimensions
 ### 1D
-![](../pics/1D.png)
+<img src="../pics/1D.png" alt="drawing" width="300"/>
+
 
 For one block, the unique threadId of thread of index (x) = x, ```threadIdx.x =x```
 
 ### 2D
-![](../pics/2D.png)
+<img src="../pics/2D.png" alt="drawing" width="400"/>
 
 In $2$-D, with block of size $(Dx, Dy)$, the unique threadId of thread with index (x,y): threadId= x + y Dx, ```threadIdx.x = x; threadIdx.y = y```
 
 ### 3D
-![](../pics/3D.png)
+<img src="../pics/3D.png" alt="drawing" width="500"/>
 
 In 3-D, with block of size (Dx,Dy, Dz), the unique threadID of thread with index (x,y,z): threadId = x+y Dx + z Dx Dz, ```threadIdx.x = x; threadIdx.y = y; threadIdx.z = z```
 
@@ -56,7 +57,7 @@ You can access each dimension of the ```dim3``` variable by
 - variable_name.z
 ```
 
-![](../pics/threads.jfif)
+<img src="../pics/threads.jfif" alt="drawing" width="400"/>
 
 ### For a given thread block, the limitation on the number of threads in each dimension are as follows:
 ```

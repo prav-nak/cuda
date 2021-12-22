@@ -1,0 +1,9 @@
+- https://arxiv.org/pdf/1804.06826.pdf
+- https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf
+- https://www.quora.com/In-GPUs-is-local-memory-same-as-L1-cache-or-is-it-different
+- https://www.ce.jhu.edu/dalrymple/classes/602/Class13.pdf
+- https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
+- https://users.ncsa.illinois.edu/kindr/projects/hpca/files/singapore_p3.pdf
+- https://www.microway.com/hpc-tech-tips/gpu-memory-types-performance-comparison/
+- https://www.youtube.com/watch?v=Zs67wrL50W8&t=2979s
+- https://www.youtube.com/watch?v=Na96fKORCfw
