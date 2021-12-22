@@ -1,3 +1,53 @@
+## Different memory types
+Local, Global, Constant, and Texture memory all reside off chip. Local, Constant, and Texture are all cached. Each SM has a L1 cache for global memory references. All SMs share a second L2 cache. Access to the shared memory is in the TB/s. Global memory is an order of magnitude slower. Each GPS has a constant memory for read only with shorter latency and higher throughput. Texture memory is read only.
+
+<img src="../pics/memory_0.png" alt="drawing" width="400"/>
+
+Local memory is just thread local global memory. It is much slower than either registers or shared memory.
+
+Speed (Fast to slow):
+
+- Register file
+- Shared Memory
+- Constant Memory
+- Texture Memory
+- (Tie) Local Memory and Global Memory
+
+<img src="../pics/memory_1.png" alt="drawing" width="400"/>
+
+## Shared memory
+Shared memory is on-chip and is much faster than local and global memory. Shared memory latency is roughly 100x lower than uncached global memory latency. Threads can access data in shared memory loaded from global memory by other threads within the same thread block. Memory access can be controlled by thread synchronization to avoid race condition (```__syncthreads```). Shared memory can be used as user-managed data caches and high parallel data reductions.
+
+The ```__syncthreads()``` is light weighted and a block level synchronization barrier. ```__syncthreads()``` ensures all threads have completed before continue.
+
+## Page-locked (pinned) memory
+- CPU can access larger data sets than their memory can hold by implementing a virtual memory system (non-locked memory).
+- Pages of memory can be temporarily saved on disk and swapped in and out when needed. 
+- When data is needed by GPU, it is copied to a page-locked pinned memory buffer
+and passed to Direct Memory Access.
+- The cost is the time to copy the data to pinned memory, the data transfer, and the deletion of page-locked memory.
+- There is usually enough space on the CPU to use page-locked memory; then the
+DMA is made to GPU without involving the CPU. 
+
+<img src="../pics/pageable_memory.png" alt="drawing" width="400"/>
+
+versus 
+
+<img src="../pics/pinned_memory.png" alt="drawing" width="400"/>
+
+
+## Shared memory 
+- Very fast, accessible to all threads in block
+- Example: threads in same block can access data obtained by global memory by other threads in the block
+- Need to be careful of race conditions. These occur because threads are grouped by
+32 thread bundles called warps for execution. If thread a and b read data from global
+memory and save as shared memory. Then thread a want to read b’s element in
+shared memory. If a and b are in different warps, then b may not be done writing
+before a wants to read it.
+
+```__syncthreads(); //to provide a barrier in block```
+
+
 ## CUDA memory transfer
 
 ```
