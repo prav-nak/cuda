@@ -1,7 +1,7 @@
 ## Different memory types
 Local, Global, Constant, and Texture memory all reside off chip. Local, Constant, and Texture are all cached. Each SM has a L1 cache for global memory references. All SMs share a second L2 cache. Access to the shared memory is in the TB/s. Global memory is an order of magnitude slower. Each GPS has a constant memory for read only with shorter latency and higher throughput. Texture memory is read only.
 
-<img src="../pics/memory_0.png" alt="drawing" width="400"/>
+<img src="../pics/memory_0.png" alt="drawing" width="500"/>
 
 Local memory is just thread local global memory. It is much slower than either registers or shared memory.
 
@@ -13,7 +13,7 @@ Speed (Fast to slow):
 - Texture Memory
 - (Tie) Local Memory and Global Memory
 
-<img src="../pics/memory_1.png" alt="drawing" width="400"/>
+<img src="../pics/memory_1.png" alt="drawing" width="500"/>
 
 ## Shared memory
 Shared memory is on-chip and is much faster than local and global memory. Shared memory latency is roughly 100x lower than uncached global memory latency. Threads can access data in shared memory loaded from global memory by other threads within the same thread block. Memory access can be controlled by thread synchronization to avoid race condition (```__syncthreads```). Shared memory can be used as user-managed data caches and high parallel data reductions.
@@ -29,11 +29,11 @@ and passed to Direct Memory Access.
 - There is usually enough space on the CPU to use page-locked memory; then the
 DMA is made to GPU without involving the CPU. 
 
-<img src="../pics/pageable_memory.png" alt="drawing" width="400"/>
+<img src="../pics/pageable_memory.png" alt="drawing" width="500"/>
 
 versus 
 
-<img src="../pics/pinned_memory.png" alt="drawing" width="400"/>
+<img src="../pics/pinned_memory.png" alt="drawing" width="500"/>
 
 
 ## Shared memory 
