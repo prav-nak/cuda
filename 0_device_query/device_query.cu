@@ -2,6 +2,7 @@
 #include "device_launch_parameters.h"
 #include <stdio.h>
 #include <iostream>
+#include "compute_capability.h"
 
 /*-----------------------------------;
 //Print the properties of the device ;
@@ -29,5 +30,7 @@ void query_device()
 }
 
 int main(){
-    query_device();
+    //query_device();
+	ComputeCapability obj;
+	obj.print_details();
 }
