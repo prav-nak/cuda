@@ -13,7 +13,7 @@ Speed (Fast to slow):
 - Texture Memory
 - (Tie) Local Memory and Global Memory
 
-<img src="../pics/memory_1.png" alt="drawing" width="500"/>
+<img src="../pics/memory_1.png" alt="drawing" width="600"/>
 
 ## Shared memory
 Shared memory is on-chip and is much faster than local and global memory. Shared memory latency is roughly 100x lower than uncached global memory latency. Threads can access data in shared memory loaded from global memory by other threads within the same thread block. Memory access can be controlled by thread synchronization to avoid race condition (```__syncthreads```). Shared memory can be used as user-managed data caches and high parallel data reductions.
@@ -29,11 +29,11 @@ and passed to Direct Memory Access.
 - There is usually enough space on the CPU to use page-locked memory; then the
 DMA is made to GPU without involving the CPU. 
 
-<img src="../pics/pageable_memory.png" alt="drawing" width="500"/>
+<img src="../pics/pageable_memory.png" alt="drawing" width="600"/>
 
 versus 
 
-<img src="../pics/pinned_memory.png" alt="drawing" width="500"/>
+<img src="../pics/pinned_memory.png" alt="drawing" width="600"/>
 
 
 ## Shared memory 
