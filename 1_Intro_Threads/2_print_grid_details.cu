@@ -3,12 +3,14 @@
 
 #include <stdio.h>
 
-__global__ void print_threadIds(){
-
+// Function to print grid information
+__global__ void print_threadIds()
+{
 	printf("gridDim.x: %d, gridDim.y: %d, gridDim.z:%d, blockId.x: %d, blockId.y: %d, blockId.z:%d, blockDim.x: %d, blockDim.y: %d, blockDim.z: %d\n", gridDim.x, gridDim.y, gridDim.z, blockIdx.x, blockIdx.y, blockIdx.z, blockDim.x, blockDim.y, blockDim.z);
 }
 
-int main() {
+int main()
+{
 
 	int nx, ny, nz;
 
@@ -16,8 +18,8 @@ int main() {
 	ny = 3;
 	nz = 1;
 
-	dim3 grid_size(2,3,4);
-    dim3 block_size(nx,ny,nz);
+	dim3 grid_size(2, 3, 4);
+	dim3 block_size(nx, ny, nz);
 
 	print_threadIds<<<grid_size, block_size>>>();
 
