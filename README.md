@@ -6,4 +6,7 @@
 - [Warps](https://github.com/prav-nak/cuda/tree/main/2_warps)
 - [Memory](https://github.com/prav-nak/cuda/tree/main/3_memory_stuff)
 - [Streams]()
+  - Async operations, overlap compute with memory transfer
+  - Timing kernels
 - [Multi GPU]()
+- [Profiling]()

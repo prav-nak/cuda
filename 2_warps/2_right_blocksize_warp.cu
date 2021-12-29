@@ -35,7 +35,7 @@ __global__ void print_details_of_warps(int *data, int size)
 int main(int argc, char **argv)
 {
 
-    int array_size = 64;
+    int array_size = 6400;
     int array_byte_size = sizeof(int) * array_size;
 
     // Create the host data array
@@ -64,5 +64,5 @@ int main(int argc, char **argv)
 
     cudaFree(device_data);
     cudaDeviceReset();
-    return EXIT_SUCCESS;
+    return 0;
 }
