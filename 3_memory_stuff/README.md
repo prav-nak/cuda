@@ -1,7 +1,15 @@
 ## Different memory types
 Local, Global, Constant, and Texture memory all reside off chip. Local, Constant, and Texture are all cached. Each SM has a L1 cache for global memory references. All SMs share a second L2 cache. Access to the shared memory is in the TB/s. Global memory is an order of magnitude slower. Each GPS has a constant memory for read only with shorter latency and higher throughput. Texture memory is read only.
 
-<img src="../pics/memory_0.png" alt="drawing" width="500"/>
+
+| Type | Read/write | Speed |
+| ------------- | ------------- |------------|
+| Global memory  | read and write  | slow, but cached |
+| Texture memory | read only | cache optimized 2D/3D access pattern |
+| Constant memory | read only | where contants and kernel arguments are stored | 
+| Shared memory | read/write | fast | 
+| Local memory | read/write | used when it does not fit in registers, part of global memory, slow but cached |
+| Registers | read/write | fast | 
 
 Local memory is just thread local global memory. It is much slower than either registers or shared memory.
 
@@ -13,7 +21,14 @@ Speed (Fast to slow):
 - Texture Memory
 - (Tie) Local Memory and Global Memory
 
-<img src="../pics/memory_1.png" alt="drawing" width="600"/>
+
+| Declaration | Memory | Scope | Lifetime |
+| ------------- | ------------- |------------|---------|
+| ```int v```  | register  | thread | thread |
+| ```int vArray[10]``` | local | thread | thread |
+| ```__shared__ int sharedV``` | shared | block | block |
+| ```__device int globalV```   | global | grid | application |
+| ```__constant__ int constantV ``` | constant | grid | application |
 
 ## Shared memory
 Shared memory is on-chip and is much faster than local and global memory. Shared memory latency is roughly 100x lower than uncached global memory latency. Threads can access data in shared memory loaded from global memory by other threads within the same thread block. Memory access can be controlled by thread synchronization to avoid race condition (```__syncthreads```). Shared memory can be used as user-managed data caches and high parallel data reductions.
@@ -86,7 +101,10 @@ Allocation is done using ```cudaMallocHost``` as shown here
 
 ### Summary
 
-![](../pics/summary.png)
+- Pageable memory - user memory space, requires extra mem-copy
+- Pinned memory - kernel memory space
+- Pinned memory performs better (higher bandwidth)
+- Do not over-allocate pinned memory - reduces amount of physical memory available for OS
 
 You should not over allocate pinned memory since it reduces the amount of physical memory available for kernel/operating system. In such cases, the system could become unstable. 
 
