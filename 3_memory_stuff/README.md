@@ -44,11 +44,11 @@ and passed to Direct Memory Access.
 - There is usually enough space on the CPU to use page-locked memory; then the
 DMA is made to GPU without involving the CPU. 
 
-<img src="../pics/pageable_memory.png" alt="drawing" width="600"/>
+<img src="../pics/pageable_memory.png" alt="drawing" width="500"/>
 
 versus 
 
-<img src="../pics/pinned_memory.png" alt="drawing" width="600"/>
+<img src="../pics/pinned_memory.png" alt="drawing" width="400"/>
 
 
 ## Shared memory 
