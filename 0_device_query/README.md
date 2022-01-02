@@ -1,3 +1,9 @@
+## Device properties
+For the device at hand, we can get the capabilities as listed below b running the example from this directory. 
+
+<img src="../pics/device_compute_capability.png" alt="drawing" width="400"/>
+
+
 ## Compute capability
 The compute capability is the "feature set" (both hardware and software features) of the device. You may have heard the NVIDIA GPU architecture names "Tesla", "Fermi" or "Kepler". Each of those architectures have features that previous versions might not have. The compute capability is your CUDA device's set of computation-related features. As NVidia's CUDA API develops, the 'Compute Capability' number increases. 
 
