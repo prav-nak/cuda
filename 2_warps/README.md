@@ -3,6 +3,7 @@
 - [Warp divergence](#warp-divergence)
     - [if-then-else](#if-then-else)
       - [Deadlock](#deadlock)
+
 # Warps
 - A warp is a set of 32 threads within a thread block such that all the threads in a warp execute the same instruction. These threads are selected serially by the SM. Once a thread block is launched on a multiprocessor (SM), all of its warps are resident until their execution finishes.
 
@@ -22,8 +23,7 @@
 - Load/Store units
 - warp schedulers
 - Special function units
-  
-  
+
 <img src="../pics/on_chip_components.png" alt="drawing" width="400"/>
 
 # Warp divergence
@@ -54,4 +54,4 @@ if (threadidx.x <16)
 }
 ```
 
-The first half of the warp will execute the then part, then wait for the second half of the warp to reach __syncthread(). However, the second half of the warp did not enter the then part; therefore, the first half of the warp will be waiting for them forever. - [Warps](#warps)
+The first half of the warp will execute the then part, then wait for the second half of the warp to reach __syncthread(). However, the second half of the warp did not enter the then part; therefore, the first half of the warp will be waiting for them forever. 

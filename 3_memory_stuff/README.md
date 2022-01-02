@@ -118,9 +118,41 @@ Local variables are stored in registers. It is local to each thread and is not s
 ### Performance of Unified Virtual Memory (introduced in CUDA 6)
 Developer views the memory as if there is only one shared memory between host and device. However, at the hardware level, there are 2 distinct spaces. 
 
-![](../pics/unified_memory.png)
+<img src="../pics/unified_memory_1.png" alt="drawing" width="400"/>
 
 ![](../pics/uvm_code.png)
+
+### Pageable memory
+```
+// allocate memory
+w0 = (real*)malloc(szarrayb);
+cudaMalloc(&w0_dev, szarrayb);
+
+// memcopy
+cudaMemcpy(w0_dev, w0, szarrayb, cudaMemcpyHostToDevice);
+
+// kernel compute
+wave13pt_d<<<...>>>(..., w0_dev, ...);
+
+// memcopy
+cudaMemcpy(w0, w0_dev, szarrayb, cudaMemcpyDeviceToHost);
+```
+
+### Pinned memory
+```{cpp}
+// allocate memory
+cudaMallocHost(&w0, szarrayb);
+cudaMalloc(&w0_dev, szarrayb);
+
+// memcopy
+cudaMemcpy(w0_dev, w0, szarrayb, cudaMemcpyHostToDevice);
+
+// kernel compute
+wave13pt_d<<<...>>>(..., w0_dev, ...);
+
+// memcopy
+cudaMemcpy(w0, w0_dev, szarrayb, cudaMemcpyDeviceToHost);
+```
 
 Performance is degraded as data transfer occurs over multiple small data transfers when it is requested from the host. It introduced latency and also poor bandwidth. 
 ![](../pics/uvm_performance.png)
@@ -132,11 +164,6 @@ For async transfer, the data needs to be on pinned memory so that there are no p
 ![](../pics/async_transfer.png)
 ![](../pics/async_transfer_2.png)
 
-### CUDA streams
-![](../pics/cuda_streams.png)
-
-### Device management
-![](../pics/device_management.png)
 
 
 Follow this link for an explanation of memory transfers: 
