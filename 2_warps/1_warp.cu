@@ -19,13 +19,13 @@ __global__ void print_details_of_warps()
 	// global block id
 	int gbid = blockIdx.y * gridDim.x + blockIdx.x;
 
-	std::cout << "local thread id = " << threadIdx.x << std::endl;
-	std::cout << "block id in x = " << blockIdx.x << std::endl;
-	std::cout << "block id in y = " << blockIdx.y << std::endl;
-	std::cout << "block id in z = " << blockIdx.z << std::endl;
-	std::cout << "global thread id = " << gid << std::endl;
-	std::cout << "warp id = " << warp_id << std::endl;
-	std::cout << "global block id = " << gbid << std::endl;
+	printf("local thread id = %d\n", threadIdx.x);
+	printf("block id in x = = %d\n", blockIdx.x );
+	printf("block id in y = = %d\n", blockIdx.y );
+	printf("block id in z = = %d\n", blockIdx.z);
+	printf("global thread id = = %d\n", gid);
+	printf("warp id = = %d\n", warp_id);
+	printf("global block id = = %d\n", gbid );
 }
 
 int main(int argc, char **argv)

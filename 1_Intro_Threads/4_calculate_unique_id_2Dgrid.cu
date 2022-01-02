@@ -6,10 +6,17 @@
 // For a 2D grid, print the unique ID of the thread
 __global__ void unique_globalid_2Darray_calc(int *input)
 {
-    int row_offset = gridDim.x * blockDim.x * blockIdx.y;
-    int block_offset = blockIdx.x * blockDim.x;
-    int gid = row_offset + block_offset + threadIdx.x;
+    int nrows_to_skip = blockIdx.y;
+    int nthreads_in_each_block = blockDim.x * blockDim.y;
+    int n_ind_for_skipped_rows = nrows_to_skip * nthreads_in_each_block * gridDim.y;
+    
+    int nblocks_to_skip_eachrow = blockIdx.x;
+    int n_ind_for_skipped_blocks = nblocks_to_skip_eachrow * nthreads_in_each_block;
 
+    int local_threadid = threadIdx.y * blockDim.x + threadIdx.x;
+    int gid = n_ind_for_skipped_rows + n_ind_for_skipped_blocks + local_threadid;
+
+    printf("nrows_to_skip: %d, n_ind_for_skipped_rows: %d, nblocks_to_skip_eachrow: %d, n_ind_for_skipped_blocks: %d, local_threadid: %d, gid: %d\n", nrows_to_skip, n_ind_for_skipped_rows, nblocks_to_skip_eachrow, n_ind_for_skipped_blocks, local_threadid, gid);
     printf("value of the array at index %d is %d\n", gid, input[gid]);
 }
 
