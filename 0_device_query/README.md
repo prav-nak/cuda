@@ -1,5 +1,5 @@
 ## Device properties
-For the device at hand, we can get the capabilities as listed below b running the example from this directory. 
+For the device at hand, we can get the capabilities as listed below by running the example from this directory. 
 
 <img src="../pics/device_compute_capability.png" alt="drawing" width="400"/>
 
