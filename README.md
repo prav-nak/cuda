@@ -1,6 +1,6 @@
 # CUDA: Table of contents
 - [Know your device: Compute capability](https://github.com/prav-nak/cuda/tree/main/0_device_query)
-  - Understand your device: How many SMs  do we have, how much memory we have etc.
+  - How many SMs  do we have, how much memory we have etc.
   - What is compute capability?
   - Query device properties
 - [Introduction to threads](https://github.com/prav-nak/cuda/tree/main/1_Intro_Threads)
