@@ -8,6 +8,10 @@
 - [Memory](https://github.com/prav-nak/cuda/tree/main/3_memory_stuff)
 - [Streams]()
   - Async operations, overlap compute with memory transfer
+  - Streams can also be used to execute multiple kernels simultaneously to more fully take advantage of the device's multiprocessors
   - Timing kernels
 - [Multi GPU]()
+- [MPI+CUDA]()
+    - CUDA aware MPI
+    - GPUDirect: high-bandwidth, low-latency communications with NVIDIA GPUs
 - [Profiling]()

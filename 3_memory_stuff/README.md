@@ -167,8 +167,7 @@ For async transfer, the data needs to be on pinned memory so that there are no p
 
 
 Follow this link for an explanation of memory transfers: 
-[](https://www.youtube.com/watch?v=Yv4thF9tvPo&t=8s)
 
-[](https://www.youtube.com/watch?v=0wf_y5fVbP0)
-
-[](https://github.com/khadjiyiannakou/trainCuda)
+- [https://www.youtube.com/watch?v=Yv4thF9tvPo&t=8s](https://www.youtube.com/watch?v=Yv4thF9tvPo&t=8s)
+- [https://www.youtube.com/watch?v=0wf_y5fVbP0](https://www.youtube.com/watch?v=0wf_y5fVbP0)
+- [https://github.com/khadjiyiannakou/trainCuda](https://github.com/khadjiyiannakou/trainCuda)
