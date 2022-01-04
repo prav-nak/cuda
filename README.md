@@ -11,7 +11,7 @@
   - Streams can also be used to execute multiple kernels simultaneously to more fully take advantage of the device's multiprocessors
   - Timing kernels
 - [Multi GPU]()
-- [MPI+CUDA]()
+- [MPI+CUDA](https://github.com/prav-nak/cuda/blob/main/6_mpi_cuda/README.md)
     - CUDA aware MPI
     - GPUDirect: high-bandwidth, low-latency communications with NVIDIA GPUs
 - [Profiling]()
