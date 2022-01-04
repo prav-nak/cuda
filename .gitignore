@@ -4,4 +4,6 @@ build/
 2_warps/build
 3_memory_stuff/build
 4_streams/build
+6_mpi_cuda/build
+7_cuBlas/build
 CUDANotes.pptx
