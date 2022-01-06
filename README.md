@@ -15,5 +15,6 @@
     - CUDA aware MPI
     - GPUDirect: high-bandwidth, low-latency communications with NVIDIA GPUs
 - [cuBlas](https://github.com/prav-nak/cuda/tree/main/7_cuBlas)
+- [cuSparse](https://github.com/prav-nak/cuda/tree/main/8_cuSparse)
 - [Profiling]()
 - [Misc questions]()
